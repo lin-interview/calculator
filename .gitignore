@@ -1,0 +1,19 @@
+# Java class files
+*.class
+
+# target folder
+/target
+/target/**
+
+# target folder
+/screenshots
+/screenshots/**
+
+# report folder
+/report
+/report/**
+
+# Intellij files
+/.idea
+/.idea/**
+*.iml
