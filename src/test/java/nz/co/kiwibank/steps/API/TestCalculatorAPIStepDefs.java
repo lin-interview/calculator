@@ -13,7 +13,15 @@ import java.util.HashMap;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class TestCalculatorAPISetpDefs extends APIBaseStepDefs {
+/**
+ * Calculator API step definitions
+ * step definitions for each step in the API test scenarios
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
+
+public class TestCalculatorAPIStepDefs extends APIBaseStepDefs {
     protected static ResponseOptions<Response> response;
 
     public HashMap<String, Object> setBody(Object leftNumber, Object rightNumber, Object operator){

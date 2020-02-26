@@ -1,8 +1,8 @@
-Feature: TestCalculatorAPI
+@API
+Feature: Test Calculator API
   Test the rest API of a simple calculator
 
   #valid partition
-  @API
   Scenario Outline: Verify Calculator API using acceptable data type
     Given I have one calculator API
     When I perform POST operation for "Calculate" with <LeftNumber> <RightNumber> and "<Operator>"
@@ -16,7 +16,6 @@ Feature: TestCalculatorAPI
       | 5          | 2           | /        | 2.5    |
 
   #invalid partition start
-  @API
   Scenario Outline: Verify calculator API with unacceptable data type
     Given I have one calculator API
     When I perform POST operation for "Calculate" with unacceptable type "<LeftNumber>" "<RightNumber>" and "<Operator>"
@@ -29,7 +28,6 @@ Feature: TestCalculatorAPI
       | -2147483648 | 0           | /        |
       | 5           | 2           | %        |
 
-  @API
   Scenario: Verify calculator API divide by zero
     Given I have one calculator API
     When I perform POST operation for "Calculate" with 1 0 and "/"

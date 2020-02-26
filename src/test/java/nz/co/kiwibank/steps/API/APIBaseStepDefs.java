@@ -9,12 +9,21 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
 
+/**
+ * API Base step definitions
+ * initiate request and store common methods
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
+
 public class APIBaseStepDefs {
+    public static final String BASE_URI = "https://calculator-api.azurewebsites.net/api/";
     protected static RequestSpecification Request;
 
     protected void initCalculatorAPI() {
         RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.setBaseUri("https://calculator-api.azurewebsites.net/api/");
+        builder.setBaseUri(BASE_URI);
         builder.setContentType(ContentType.JSON);
         RequestSpecification requestSpec = builder.build();
         Request = RestAssured.given().spec(requestSpec);

@@ -12,6 +12,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.logging.Logger;
 
+/**
+ * Base page class
+ * for common elements and common methods
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
 public class PAGE_Base {
     protected final static long timeout = 30;
     protected static final Logger LOGGER = Logger.getLogger(PAGE_Base.class.getName());

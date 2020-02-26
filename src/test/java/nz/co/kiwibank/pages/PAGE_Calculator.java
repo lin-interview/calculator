@@ -5,6 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+/**
+ * Calculator page class
+ * for elements and operations on calculator page
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
 public class PAGE_Calculator extends PAGE_Base{
 
     public PAGE_Calculator(WebDriver driver) {

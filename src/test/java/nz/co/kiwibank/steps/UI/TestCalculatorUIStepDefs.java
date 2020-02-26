@@ -8,13 +8,21 @@ import nz.co.kiwibank.pages.PAGE_Calculator;
 import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 
-public class TestCalculatorUISetpDefs extends UIBaseStepDefs{
+/**
+ * Calculator UI step definitions
+ * step definitions for each step in the UI test scenarios
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
 
-    PAGE_Calculator page = PageFactory.initElements(Current(), PAGE_Calculator.class);
+public class TestCalculatorUIStepDefs extends UIBaseStepDefs{
+
+    PAGE_Calculator page = PageFactory.initElements(getWebDriver(), PAGE_Calculator.class);
 
     @Given("I already opened website {string}")
     public void iAlreadyOpenedWebsite(String url) {
-        Current().navigate().to(url);
+        getWebDriver().navigate().to(url);
     }
 
     @When("^I (type in|choose) \"([^\"]*)\" as the \"([^\"]*)\"$")
@@ -34,10 +42,6 @@ public class TestCalculatorUISetpDefs extends UIBaseStepDefs{
         }
     }
 
-//    @And("I choose {string} as the {string}")
-//    public void iChooseAsThe(String arg0, String arg1) {
-//    }
-
     @And("I click the calculator button")
     public void iClickTheCalculatorButton() {
         page.clickCalculateButton();
@@ -50,7 +54,7 @@ public class TestCalculatorUISetpDefs extends UIBaseStepDefs{
 
     @And("I have switched to the iFrame {string}")
     public void iHaveSwitchedToTheIFrame(String frameName) {
-        Current().switchTo().frame(frameName);
+        getWebDriver().switchTo().frame(frameName);
     }
 
     @Then("I should see {string} as the {string}")
@@ -67,7 +71,7 @@ public class TestCalculatorUISetpDefs extends UIBaseStepDefs{
 
     @Then("I should see {string} as error message")
     public void iShouldSeeAsErrorMessage(String expectedValue) {
-        Assert.assertTrue(Current().getPageSource().contains(expectedValue));
+        Assert.assertTrue(getWebDriver().getPageSource().contains(expectedValue));
     }
 
     @Then("I should see the attribute {string} of {string} is {string}")

@@ -5,7 +5,6 @@ import io.cucumber.junit.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.json.support.Status;
-import nz.co.kiwibank.steps.UI.UIBaseStepDefs;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
@@ -16,9 +15,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * RunAllTest class
+ * indicate which scenarios will be executed
+ * provide the location of feature files, report files and how to generate pretty html reports
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "html:report/cucumber-pretty", "json:report/cucumber.json"}, tags = {"@API or @UI"}, features = "classpath:features")
+@CucumberOptions(
+        plugin = {"pretty", "html:report/cucumber-pretty", "json:report/cucumber.json"},
+        tags = {"@API or @UI"},
+        features = "classpath:features",
+        monochrome = true)
 public class RunAllTest {
     protected static final Logger LOGGER = Logger.getLogger(RunAllTest.class.getName());
     @AfterClass
@@ -43,7 +54,7 @@ public class RunAllTest {
             reportBuilder.generateReports();
             LOGGER.log(Level.INFO, "Finished");
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Exception occured generating pretty report" + e.toString());
+            LOGGER.log(Level.SEVERE, "Exception occurred generating pretty report" + e.toString());
         }
     }
 }

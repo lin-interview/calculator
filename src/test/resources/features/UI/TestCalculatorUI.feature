@@ -1,7 +1,7 @@
-Feature: TestCalculatorUI
+@UI
+Feature: Test Calculator UI
   Test the UI for a simple calculator
 
-  @UI
   Scenario Outline: Verify Calculator UI using acceptable data type input
     Given I already opened website "https://calculator-web.azurewebsites.net/"
     And I have switched to the iFrame "result"
@@ -17,7 +17,6 @@ Feature: TestCalculatorUI
       | 5          | 2           | *        | 10     |
       | 5          | 2           | /        | 2.5    |
 
-  @UI
   Scenario Outline: Verify if user can type in all different length int type numbers
     Given I already opened website "https://calculator-web.azurewebsites.net/"
     And I have switched to the iFrame "result"
@@ -39,14 +38,12 @@ Feature: TestCalculatorUI
       | 2          | -2          |
       | 0          | 0           |
 
-  @UI
   Scenario: Verify if result text box is readonly
     Given I already opened website "https://calculator-web.azurewebsites.net/"
     And I have switched to the iFrame "result"
     Then I should see the attribute "readonly" of "resultTextBox" is "true"
 
   #invalid partition start
-  @UI
   Scenario: Verify calculator UI divide by zero
     Given I already opened website "https://calculator-web.azurewebsites.net/"
     And I have switched to the iFrame "result"
@@ -56,7 +53,6 @@ Feature: TestCalculatorUI
     And I click the calculator button
     Then I should see "divisor can not be zero" as error message
 
-  @UI
   Scenario: Verify calculator UI with unacceptable data type input
     Given I already opened website "https://calculator-web.azurewebsites.net/"
     And I have switched to the iFrame "result"

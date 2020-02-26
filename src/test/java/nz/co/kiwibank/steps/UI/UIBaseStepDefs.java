@@ -1,12 +1,23 @@
 package nz.co.kiwibank.steps.UI;
 
-import nz.co.kiwibank.pages.PAGE_Base;
 import org.apache.commons.lang.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
+/**
+ * UI Base step definitions
+ * initiate WebDriver and store common methods
+ *
+ * @author Lin
+ * @since 26/02/2020
+ */
 
 public class UIBaseStepDefs {
 
@@ -14,9 +25,9 @@ public class UIBaseStepDefs {
     private static WebDriver driver = null;
     private static String baseUrl = null;
 
-    public static WebDriver Current(){
+    public static WebDriver getWebDriver(){
         if(null == driver){
-            driver = CreatWebBrowser();
+            driver = initWebDriver();
         }
         return driver;
     }
@@ -26,7 +37,7 @@ public class UIBaseStepDefs {
         baseUrl = null;
     }
 
-    private static WebDriver CreatWebBrowser() {
+    private static WebDriver initWebDriver() {
         if(SystemUtils.IS_OS_MAC_OSX){
             System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\bin\\chromedriverformac");
         } if(SystemUtils.IS_OS_LINUX){
@@ -43,5 +54,11 @@ public class UIBaseStepDefs {
         //To maximize browser
         driver.manage().window().maximize();
         return driver;
+    }
+
+    public String getCurrentTimeStr(String timePattern){
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat(timePattern);
+        return dateFormat.format(date);
     }
 }

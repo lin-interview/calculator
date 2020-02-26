@@ -5,12 +5,12 @@ This code is for the technical test for Lin.
  1. Global Dependencies
     install Maven
  2. Project Dependencies
-    cd TechnicalTestForLin
+    cd <repository folder>
     mvn test-compile
 
  Running the tests
     mvn test "-Dcucumber.filter.tags=@API or @UI"
 
- Check the testing reprot
-    /report/cucumber-html-reprots/overview-*.html
+ Check the testing report
+    /report/cucumber-html-reports/overview-*.html
 
