@@ -40,7 +40,7 @@ public class PAGE_Base {
     protected void clearBeforeSendKeys(WebElement element, String inputTerm) {
         waitElement(element);
         element.clear();
-        element.sendKeys(inputTerm);
+        sendKeys(element, inputTerm);
     }
 
     protected void selectByVisibleText(WebElement element, String text) {
@@ -90,21 +90,5 @@ public class PAGE_Base {
             LOGGER.warning("jQuery either not present or not fully loaded");
         }
         return jQcondition;
-    }
-
-    protected void waitForTheResult(WebDriver driver, long timeOutInSeconds) {
-        ExpectedCondition<Boolean> getResultCondition = new
-                ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        WebElement resultTextBox = driver.findElement(By.className("result"));
-                        String value = resultTextBox.getAttribute("value");
-                        if(StringUtils.isNotBlank(value))
-                            return true;
-                        else
-                            return false;
-                    }
-                };
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
-        wait.until(getResultCondition);
     }
 }

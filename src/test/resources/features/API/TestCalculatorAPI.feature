@@ -1,11 +1,12 @@
 @API
 Feature: Test Calculator API
   Test the rest API of a simple calculator
+  Background:
+    Given I have one calculator API
 
   #valid partition
   Scenario Outline: Verify Calculator API using acceptable data type
-    Given I have one calculator API
-    When I perform POST operation for "Calculate" with <LeftNumber> <RightNumber> and "<Operator>"
+    When I perform POST operation for "Calculate" with <LeftNumber> "<Operator>" <RightNumber>
     Then the response code should be "200"
     And I should see the body has "Value" as "<Result>"
     Examples:
@@ -17,8 +18,7 @@ Feature: Test Calculator API
 
   #invalid partition start
   Scenario Outline: Verify calculator API with unacceptable data type
-    Given I have one calculator API
-    When I perform POST operation for "Calculate" with unacceptable type "<LeftNumber>" "<RightNumber>" and "<Operator>"
+    When I perform POST operation for "Calculate" with unacceptable type "<LeftNumber>" "<Operator>" "<RightNumber>"
     Then the response code should be "400"
     And I should see the body has "Error Msg" as "unacceptable data type"
     Examples:
@@ -29,8 +29,7 @@ Feature: Test Calculator API
       | 5           | 2           | %        |
 
   Scenario: Verify calculator API divide by zero
-    Given I have one calculator API
-    When I perform POST operation for "Calculate" with 1 0 and "/"
+    When I perform POST operation for "Calculate" with 1 "/" 0
     Then the response code should be "400"
     And I should see the body has "Error Msg" as "divisor can not be zero"
   #invalid partition end

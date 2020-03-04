@@ -37,8 +37,8 @@ public class TestCalculatorAPIStepDefs extends APIBaseStepDefs {
         initCalculatorAPI();
     }
 
-    @When("I perform POST operation for {string} with {int} {int} and {string}")
-    public void iPerformPOSTOperationForWithUnacceptableTypeAnd(String url, int leftNumber, int rightNumber, String operator) {
+    @When("I perform POST operation for {string} with {int} {string} {int}")
+    public void iPerformPOSTOperationForWithUnacceptableTypeAnd(String url, int leftNumber, String operator, int rightNumber) {
         response = PostOpsWithBody(url, setBody(leftNumber, rightNumber, operator));
     }
 
@@ -53,8 +53,8 @@ public class TestCalculatorAPIStepDefs extends APIBaseStepDefs {
         assertThat(response.getStatusCode(), equalTo(Integer.parseInt(statusCode)));
     }
 
-    @When("I perform POST operation for {string} with unacceptable type {string} {string} and {string}")
-    public void iPerformPOSTOperationForWithUnacceptableTypeAnd(String url, String leftNumber, String rightNumber, String operator) {
+    @When("I perform POST operation for {string} with unacceptable type {string} {string} {string}")
+    public void iPerformPOSTOperationForWithUnacceptableTypeAnd(String url, String leftNumber, String operator, String rightNumber) {
         response = PostOpsWithBody(url, setBody(leftNumber, rightNumber, operator));
     }
 }

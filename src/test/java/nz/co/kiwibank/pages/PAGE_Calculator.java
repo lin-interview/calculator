@@ -4,6 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /**
  * Calculator page class
@@ -16,6 +21,7 @@ public class PAGE_Calculator extends PAGE_Base{
 
     public PAGE_Calculator(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(how = How.ID, using = "leftNumber")
@@ -50,7 +56,8 @@ public class PAGE_Calculator extends PAGE_Base{
     }
 
     public String getResult(){
-        waitForTheResult(driver, timeout);
+        new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(
+                ExpectedConditions.attributeToBeNotEmpty(resultTextBox, "value"));
         return getResultTextBoxAttribute("value");
     }
 

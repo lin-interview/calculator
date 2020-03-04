@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestCalculatorUIStepDefs extends UIBaseStepDefs{
 
-    PAGE_Calculator page = PageFactory.initElements(getWebDriver(), PAGE_Calculator.class);
+    PAGE_Calculator page = new PAGE_Calculator(getWebDriver());
 
     @Given("I already opened website {string}")
     public void iAlreadyOpenedWebsite(String url) {
